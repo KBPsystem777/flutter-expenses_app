@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
@@ -43,5 +44,53 @@ class NewTransaction extends StatefulWidget {
         }
         )};
   }
-  
+
+  @override
+  Widget build(BuildContext, context) {
+    return Card(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget>[
+          TextField(
+            decoration: InputDecoration(labelText: 'Text'),
+            controller: _titleController,
+            onSubmitted: (_) => _submitData(),
+          ),
+          TextField(
+            decoration: InputDecoration(labelText: 'Amount'),
+            controller: _amountController,
+            keyboardType: TextInput.numberWithOptions(decimal: true),
+            onSubmitted: (_) => _submittedData(),
+          ),
+          Container(
+            height: 70,
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    _selectedDate == null
+                    ? 'No date chosen!'
+                    : 'Selected Date: ${DateFormat.yMd().format(_selectedDate)}',
+                  ).
+                  ),
+                  FlatButton(
+                    child: Text(
+                      'Choose date',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: _presentDatePickert,
+                    textColor: Theme.of(context).primaryColor,
+                  ),
+              ],
+            ),
+            RaisedButton(
+              child: Text('Add Transaction'),
+              color: Theme.of(context).primaryColor,
+              textColor: Colors.white,
+              onPressed: _submitData,
+            ),
+        ],
+      ),
+    );
+  }
 }
