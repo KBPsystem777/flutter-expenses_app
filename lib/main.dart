@@ -79,7 +79,7 @@ List<Transaction> get recentTransactions{
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
-      title: Text('Flutter App_Expenses'),
+      title: Text('G Expenses'),
       actions: <Widget>[
         IconButton(icon: Icon(Icons.add),
         onPressed: () => _startAddNewTransaction(context),
