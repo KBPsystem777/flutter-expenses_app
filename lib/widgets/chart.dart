@@ -1,6 +1,6 @@
 import '../widgets/chart_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/int.dart';
+import 'package:intl/intl.dart';
 
 import '../models/transaction.dart';
 
@@ -25,16 +25,17 @@ class Chart extends StatelessWidget {
       }
       return {
         'day': DateFormat.E().format(weekDay),
-        'amount': totlaSum,
+        'amount': totalSum,
       };
     }). reversed.toList();
   }
-  double.get totalSpending{
+  double get totalSpending{
     return groupedTransactionValues.fold(0.0, (sum, item) {
-      return sum + item['amount']
+      return sum + item['amount'];
     });
   }
-  @overridde
+
+  @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 6,

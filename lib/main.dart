@@ -1,4 +1,3 @@
-import 'package:expenses/transaction.dart';
 import 'package:flutter/material.dart';
 
 import './widgets/chart.dart';
@@ -61,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(context: ctx, builder: (_) {
-      return void_addNewTransaction(this._startAddNewTransaction);
+      return NewTransaction(this._addNewTransaction);
     });
   }
 

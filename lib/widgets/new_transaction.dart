@@ -11,6 +11,7 @@ class NewTransaction extends StatefulWidget {
   @override
   _NewTransactionState createState() => _NewTransactionState();
 
+}
   class _NewTransactionState extends State<NewTransaction> {
     final _titleController = TextEditingController();
     final _amountController = TextEditingController();
@@ -35,18 +36,18 @@ class NewTransaction extends StatefulWidget {
           firstDate: DateTime(2020),
           lastDate: DateTime.now())
         .then((pickedDate) {
-          if(pickedDate === null) {
+          if(pickedDate == null) {
               return;
         } else {
           setState(() {
             this._selectedDate = pickedDate;
           });
         }
-        )};
+        });
   }
 
   @override
-  Widget build(BuildContext, context) {
+  Widget build(BuildContext context) {
     return Card(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -59,8 +60,8 @@ class NewTransaction extends StatefulWidget {
           TextField(
             decoration: InputDecoration(labelText: 'Amount'),
             controller: _amountController,
-            keyboardType: TextInput.numberWithOptions(decimal: true),
-            onSubmitted: (_) => _submittedData(),
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+            onSubmitted: (_) => _submitData(),
           ),
           Container(
             height: 70,
@@ -69,20 +70,21 @@ class NewTransaction extends StatefulWidget {
                 Expanded(
                   child: Text(
                     _selectedDate == null
-                    ? 'No date chosen!'
-                    : 'Selected Date: ${DateFormat.yMd().format(_selectedDate)}',
-                  ).
+                      ? 'No date chosen!'
+                      : 'Selected Date: ${DateFormat.yMd().format(_selectedDate)}',
+                  ),
                   ),
                   FlatButton(
                     child: Text(
                       'Choose date',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    onPressed: _presentDatePickert,
+                    onPressed: _presentDatePicker,
                     textColor: Theme.of(context).primaryColor,
                   ),
               ],
             ),
+          ),
             RaisedButton(
               child: Text('Add Transaction'),
               color: Theme.of(context).primaryColor,

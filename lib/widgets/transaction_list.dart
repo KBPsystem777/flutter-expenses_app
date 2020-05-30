@@ -11,10 +11,10 @@ class TransactionList extends StatelessWidget {
   TransactionList(this.transactions, this.deleteTx);
 
   @override
-  Widget build(BuildContext, context) {
+  Widget build(BuildContext context) {
     return Container(
       height: 550,
-      child: this.transaction,isEmpty ? Column(
+      child: this.transactions.isEmpty ? Column(
         children: <Widget>[
           Text('No Transactions Added yet!',
           style: Theme.of(context).textTheme.title,
@@ -40,7 +40,7 @@ class TransactionList extends StatelessWidget {
           title: Text(transactions[index].title,
           ),
           subtitle: Text(
-            DateFormat.yMMd().format(transactions[index].date),
+            DateFormat.yMMMd().format(transactions[index].date),
           ),
           trailing: IconButton(
             icon: Icon(Icons.delete),
